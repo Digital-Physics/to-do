@@ -28,6 +28,8 @@ function renderItems() {
             <div class="status">${item.status}</div>
         `;
 
+        li.appendChild(createUpButton(index)); // Add up button
+        li.appendChild(createDownButton(index)); // Add down button
         li.appendChild(createDeleteButton(index)); // Add delete button
         openList.appendChild(li);
     });
@@ -44,6 +46,36 @@ function createDeleteButton(index) {
         renderItems();
     });
     return deleteButton;
+}
+
+function createUpButton(index) {
+    const upButton = document.createElement('button');
+    upButton.innerText = "🔼";
+    upButton.addEventListener('click', () => {
+        // swap with above, unless 0
+        if (index != 0) {
+            // unlike python we need to make an array to swap these two list elements this in one line
+            [items[index - 1], items[index]] = [items[index], items[index - 1]];
+            saveItems();
+            renderItems();
+        }
+    });
+    return upButton;
+}
+
+function createDownButton(index) {
+    const downButton = document.createElement('button');
+    downButton.innerText = "🔽";
+    downButton.addEventListener('click', () => {
+        // swap with above, unless 0
+        if (index != items.length - 1) {
+            // unlike python we need to make an array to swap these two list elements this in one line
+            [items[index + 1], items[index]] = [items[index], items[index + 1]];
+            saveItems();
+            renderItems();
+        }
+    });
+    return downButton;
 }
 
 addBtn.addEventListener('click', addItem);
