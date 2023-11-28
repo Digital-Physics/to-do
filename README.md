@@ -1,1 +1,1 @@
-This is code for a very simple website that allows the user to save a To Do list. The To Do items are saved in between sessions, if the user uses the same browser, using localStorage.
+This is code for a very simple website that allows the user to save a To Do list. The To Do items are saved in between sessions, if the user uses the same browser, using localStorage. No sign-in is needed. No databases were used.
